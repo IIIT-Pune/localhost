@@ -1,4 +1,4 @@
-
+// FUNCTION TO MERGE TWO SORTED LINKED LISTS
 
 /* Link list Node
 struct Node {
@@ -11,79 +11,44 @@ struct Node {
   }
 };
 */
-// Function to merge two sorted linked list.
+
 Node *sortedMerge(Node *head1, Node *head2)
 {
-    /*
-    if(head1==NULL)
-    {
-        return head2;
-    }
-    if(head2==NULL)
-    {
-        return head1;
-    }
-    Node* head=NULL;
-    Node* tail=NULL;
-    if(head1->data<=head2->data)
-    {
-        head=tail=head1;
-        head1=head1->next;
-    }
-    else
-    {
-        head=tail=head2;
-        head2=head2->next;
-    }
-
-    while(head1!=NULL && head2!=NULL)
-    {
-        if(head1->data<=head2->data)
-    {
-
-        tail->next=head1;
-        tail=head1;
-
-        head1=head1->next;
-    }
-    else
-    {
-        tail->next=head2;
-        tail=head2;
-        head2=head2->next;
-    }
-     if(head1==NULL)
-
-    {
-        tail->next=head2;
-    }
-    else
-    {
-        tail->next=head1;
-    }
-
-    }
-    return head;
-    */
+    // new node tail set as null
     Node *tail = NULL;
+    // checking base cases
+
+    // if first list is empty then directly return second list
     if (head1 == NULL)
     {
         return head2;
     }
+    // else if second list is empty directly return first list
     if (head2 == NULL)
     {
         return head1;
     }
+
+    // we iterate from the start of both lists and check which list has smaller element
+
+    // we assign that value to tail and then recursively call the sorted merge function for remaining elements
     if (head1->data <= head2->data)
     {
         tail = head1;
         tail->next = sortedMerge(head1->next, head2);
+        // head1->next because head1 was smaller so we already took that in our ans list
+        // and moved forward
     }
     else
     {
         tail = head2;
         tail->next = sortedMerge(head1, head2->next);
-    }
 
+        // as explained above we do the similar method on the second list elements
+    }
+    // as one list reaches null i.e it is completely iterated over then we can directly add the remaining elements of other list as they are all
+    // bigger than the elements already in ans list
+
+    // linked list is ready
     return tail;
 };
