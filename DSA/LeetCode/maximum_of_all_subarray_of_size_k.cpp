@@ -34,3 +34,17 @@ public:
         return ans;
     }
 };
+
+
+// Steps below :
+
+// Create a deque to store K elements.
+// Run a loop and insert the first K elements in the deque. Before inserting the element, check if the element at the back of the queue is smaller than the current element, if it is so remove the element from the back of the deque until all elements left in the deque are greater than the current element. Then insert the current element, at the back of the deque.
+// Now, run a loop from K to the end of the array.
+// Print the front element of the deque.
+// Remove the element from the front of the queue if they are out of the current window.
+// Insert the next element in the deque. Before inserting the element, check if the element at the back of the queue is smaller than the current element, if it is so remove the element from the back of the deque until all elements left in the deque are greater than the current element. Then insert the current element, at the back of the deque.
+// Print the maximum element of the last window.
+
+//  Time complexity ->  O(N) 
+// Space complexity -> O(k)
